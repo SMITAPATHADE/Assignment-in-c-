@@ -1,5 +1,7 @@
 # Assignment-in-c-
-Practical 
+Practical 1
+
+
 #include <stdio.h>
 #include <string.h>
 #define MAX 100  
