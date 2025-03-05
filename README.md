@@ -95,6 +95,8 @@ int main()
 
 practical 2
 
+
+
 #include <stdio.h>
 
 #include <string.h>
