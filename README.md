@@ -96,55 +96,107 @@ int main()
 practical 2
 
 #include <stdio.h>
+
 #include <string.h>
+
 #define MAX 100  
+
 struct Movie
+
  {
+
     char name[50];
+
     int releaseYear;
+
     float duration;
+
 };
-void sortMovies(struct Movie movies[], int n) {
+
+void sortMovies(struct Movie movies[], int n) 
+
+{
+
     int i, j;
+
     struct Movie temp;
+
 for (i = 0; i < n - 1; i++)
+
  {
+
         for (j = 0; j < n - 1 - i; j++)
+
  {
+
             if (movies[j].releaseYear > movies[j + 1].releaseYear) 
+
 {
+
                 temp = movies[j];
+
                 movies[j] = movies[j + 1];
+
                 movies[j + 1] = temp;
+
             }
+
         }
+
     }
+
 }
+
 int main() 
+
 {
-    struct Movie movies[MAX];  // Array to store movies
+
+    struct Movie movies[MAX]; 
+ 
     int n, i;
+
     printf("Enter the number of movies: ");
+
     scanf("%d", &n);
+
     for (i = 0; i < n; i++) 
+
 {
+
         printf("\nEnter details for Movie %d:\n", i + 1);
+
         printf("Enter Movie Name: ");
+
         scanf(" %[^\n]s", movies[i].name); 
+
         printf("Enter Release Year: ");
+
         scanf("%d", &movies[i].releaseYear);
+
         printf("Enter Duration (in minutes): ");
+
         scanf("%f", &movies[i].duration);
+
     }
+
     sortMovies(movies, n);
+
     printf("\nMovies Sorted by Release Year:\n");
+
     for (i = 0; i < n; i++) 
+
 {
+
         printf("\nMovie Name: %s\n", movies[i].name);
+
         printf("Release Year: %d\n", movies[i].releaseYear);
+
         printf("Duration: %.2f minutes\n", movies[i].duration);
+
     }
+
   return 0;
+
 }
 
 practical 3
