@@ -1,0 +1,71 @@
+assignment 2 
+
+1.Draw a regular graph on 4 vertices with degree 2.
+
+Ans-
+
+import networkx as nx
+
+import matplotlib.pyplot as plt
+
+import numpy as np
+
+
+# 1. Draw a regular graph on 4 vertices with degree 2
+
+G1 = nx.cycle_graph(4)
+
+nx.draw(G1, with_labels=True)
+
+plt.show()
+
+
+2.Draw a regular graph on 5 vertices with degree 3.
+
+Ans-
+
+# 2. Draw a regular graph on 5 vertices with degree 3
+
+G2 = nx.wheel_graph(5)
+
+nx.draw(G2, with_labels=True)
+
+plt.show()
+
+
+3.Draw the star graphs on 4, 7 and 8 vertices
+
+Ans-
+
+# 3. Draw the star graphs on 4, 7 and 8 vertices
+
+G3 = nx.star_graph(3)
+
+G4 = nx.star_graph(6)
+
+G5 = nx.star_graph(7)
+
+nx.draw(G3, with_labels=True)
+
+plt.show()
+
+nx.draw(G4, with_labels=True)
+
+plt.show()
+
+nx.draw(G5, with_labels=True)
+
+plt.show()
+
+
+4.Draw the Petersen graph .
+
+Ans-
+
+# 4. Draw the Petersen graph
+
+G6 = nx.petersen_graph()
+
+nx.draw(G6, with_labels=True)
+
+plt.show()
