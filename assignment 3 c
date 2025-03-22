@@ -1,0 +1,102 @@
+Advanced C Language
+Practical Assignment No.-3
+Q.1 Write a Program to swap two numbers by using pointer.
+Ans- 
+ #include <stdio.h>
+void swap(int *a, int *b) 
+{
+ int temp = *a; 
+    *a = *b;       
+    *b = temp;     
+}
+int main() 
+{
+    int num1, num2;
+    printf("Enter two numbers:\n");
+    scanf("%d %d", &num1, &num2);
+printf("Before swapping: num1 = %d, num2 = %d\n", num1, num2);
+    swap(&num1, &num2);
+printf("After swapping: num1 = %d, num2 = %d\n", num1, num2);
+ return 0;
+}
+
+Q.2  Program for increments the variable pointer to access each succeeding element of the array.
+Ans-
+#include<stdio.h>
+const int MAX 3;
+int main()
+{
+int var[] (20, 200, 400);
+int i, *ptr ;
+ptr var;
+for (i=0; i < MAX; i++)
+{
+printf("\nAddress of var[%d] = %x\n", i, ptr);
+printf("Value of var [%d] = %d\n", i, *ptr);
+ptr++;
+}
+return 0;
+}
+
+Q.3 Dereferencing operation using pointers.
+Ans-
+#include<stdio.h>
+int main()
+{
+int * pc, c;
+c = 22;
+printf("Address of c: %u\n", &c);
+printf("Value of c: % d \n\n”, c);
+pc = &c;
+printf("Address of pointer pc: %u\n", pc);
+printf("Content of pointer pc: % d \n\n”, *pc);
+c = 11;
+printf("Address of pointer pc: % u \n\n" , pc);
+printf("Content of pointer pc: %d\n\n", *pc);
+*pc = 2;
+printf("Address of c: %u \n " ,&c);
+printf("Value of c: % d \n\n”, c);
+return 0;
+}
+
+Q.4  Write a program to display the elements of an array containing n integers in the reverse order using a pointer to the array.
+Ans-
+#include <stdio.h>
+int main() 
+{
+    int n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+int arr[n];
+    printf("Enter %d elements: ", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+ int *ptr = arr + n - 1; 
+printf("Elements in reverse order: ");
+    while (ptr >= arr) 
+{
+        printf("%d ", *ptr);
+        ptr--;    
+ }
+    printf("\n");
+return 0;
+}
+
+Q.5  Program to find length of string.
+Ans-
+#include<stdio.h>
+#define MAX _SIZE 100
+int main()
+{
+char text [MAX_SIZE]; 
+char *str= text; 
+int count =0;
+printf("Enter any string: ");
+gets(text);
+while(*(str++) != '\0') 
+count++;
+printf("Length of '%s' =%d", text, count);
+return 0;
+}
+
