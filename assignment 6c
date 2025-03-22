@@ -1,0 +1,146 @@
+Q.1 Write a program that accepts a string and generates all its permutations. For example: ABC,ACB, BAC, BCA, CAB, CBA.
+Ans-
+#include <stdio.h>
+#include <string.h>
+void swap(char *x, char *y) 
+{
+    char temp = *x;
+    *x = *y;
+    *y = temp;
+}
+void generatePermutations(char *str, int left, int right) 
+{
+    if (left == right) 
+{
+        printf("%s\n", str);
+        return;
+    }
+      for (int i = left; i <= right; i++)
+ {
+        swap(&str[left], &str[i]);  
+        generatePermutations(str, left + 1, right); 
+        swap(&str[left], &str[i]);  )
+    }
+}
+int main()
+ {
+    char str[100];  
+    printf("Enter a string: ");
+    scanf("%s", str);
+printf("Permutations:\n");
+    generatePermutations(str, 0, strlen(str) - 1);
+    return 0;
+}
+
+Q.2 Write a program which accepts a sentence from the user and alters it as follows:
+Every space is replaced by *, case of all alphabets is reversed, digits are replaced
+by ?.
+Ans-
+#include <stdio.h>
+#include <ctype.h>
+void alterSentence(char *str) 
+{
+    for (int i = 0; str[i] != '\0'; i++)
+ {
+        if (str[i] == ' ')
+ {
+            str[i] = '';  
+        } 
+else if (isalpha(str[i]))
+{
+ str[i] = islower(str[i]) ? toupper(str[i]) : tolower(str[i]);
+        }
+ else if (isdigit(str[i]))
+ {
+            str[i] = '?';  
+        }
+    }
+}
+int main()
+ {
+    char str[200];  
+ printf("Enter a sentence: ");
+    fgets(str, sizeof(str), stdin);  
+alterSentence(str);
+   printf("Altered sentence: %s", str);
+ return 0;
+}
+
+Q.3 Define two constant arrays of strings, one containing country names (ex: India,
+France etc.,) and the other containing their capitals. (ex: Delhi, Paris etc.,). Note that 
+country names and capital names have a one-one correspondence. Accept a country
+name from the user and display itscapital. Example: Input: India , Output: Delhi.
+Ans
+-#include <stdio.h>
+#include <string.h>
+#define SIZE 5  
+int main()
+ {
+    const char *countries[SIZE] = {"India", "France", "USA", "Germany", "Japan"};
+    const char *capitals[SIZE] = {"Delhi", "Paris", "Washington D.C.", "Berlin", "Tokyo"};
+ char input[50];
+    int found = 0;  
+    printf("Enter a country name: ");
+    scanf("%s", input);
+    for (int i = 0; i < SIZE; i++) 
+{
+        if (strcmp(input, countries[i]) == 0) 
+{  
+            printf("Capital: %s\n", capitals[i]);
+            found = 1;
+            break;
+        }
+    }
+    if (!found)
+ {
+        printf("Country not found in database.\n");
+    }
+return 0;
+}
+
+Q.4 Write a function which returns the substring of a given string using pointers. Use this function inmain. Function prototype: char * substring(char *str, int start, int end);
+Ans-
+#include <stdio.h>
+#include <stdlib.h>
+char *substring(char *str, int start, int end)
+ {
+    if (start > end) return NULL; 
+    int length = end - start + 1; 
+    char *sub = (char *)malloc((length + 1) * sizeof(char)); 
+    if (sub == NULL) 
+{
+        printf("Memory allocation failed!\n");
+        return NULL;
+    }
+ char *ptr = sub;
+    for (int i = start; i <= end; i++) 
+{
+        *ptr = *(str + i);
+        ptr++;
+    }
+    *ptr = '\0'; 
+    return sub;
+}
+int main() 
+{
+    char str[100];
+    int start, end;
+    printf("Enter a string: ");
+    scanf("%s", str);
+    printf("Enter start index: ");
+    scanf("%d", &start);
+    printf("Enter end index: ");
+    scanf("%d", &end);
+    char *result = substring(str, start, end);
+ if (result != NULL)
+ {
+        printf("Substring: %s\n", result);
+        free(result); 
+    }
+ E
+9lse
+ {
+        printf("Invalid indices!\n");
+    }
+  return 0;
+}
