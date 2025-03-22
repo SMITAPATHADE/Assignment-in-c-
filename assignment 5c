@@ -1,0 +1,173 @@
+Q.1 Write a program to read a string and copy it to another sting and display copied string. Also the length of copied string. (Use built in functions).
+Ans-
+#include <stdio.h>
+#include <string.h> // For built-in string functions
+int main()
+ {
+    char originalString[100], copiedString[100];
+printf("Enter a string: ");
+    fgets(originalString, sizeof(originalString), stdin);
+  originalString[strcspn(originalString, "\n")] = '\0';
+strcpy(copiedString, originalString);
+ printf("Copied string: %s\n", copiedString);
+ printf("Length of copied string: %lu\n", strlen(copiedString));
+  return 0;
+}
+
+
+Q.2 Write a menu driven program to perform the following operations on string.
+ i. Reverse of string 
+ii. Convert to uppercase 
+iii. Convert to lowercase.
+Ans-
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main()
+ {
+    char str[100];
+    int choice;
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str, "\n")] = '\0'; 
+ do 
+{
+        printf("\nMenu:\n");
+        printf("1. Reverse the string\n");
+        printf("2. Convert to uppercase\n");
+        printf("3. Convert to lowercase\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+switch (choice) 
+{
+            case 1:
+ {             
+    int len = strlen(str);
+                for (int i = 0; i < len / 2; i++) 
+{
+                    char temp = str[i];
+                    str[i] = str[len - i - 1];
+                    str[len - i - 1] = temp;
+                }
+                printf("Reversed string: %s\n", str);
+                break;
+            }
+            case 2: 
+{ 
+                for (int i = 0; str[i] != '\0'; i++)
+{
+                    str[i] = toupper(str[i]);
+                }
+                printf("Uppercase string: %s\n", str);
+                break;
+            }
+            case 3: 
+{    
+             for (int i = 0; str[i] != '\0'; i++) 
+{
+                    str[i] = tolower(str[i]);
+                }
+                printf("Lowercase string: %s\n", str);
+                break;
+            }
+            case 4:
+                printf("Exiting program.\n");
+                break;
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+    } 
+while (choice != 4);
+  return 0;
+}
+
+Q.3 Write a program to read a string and count total number of digits, alphabets and special characters.
+Ans-
+#include <stdio.h>
+#include <ctype.h>
+int main()
+ {
+    char str[100];
+    int i, digits = 0, alphabets = 0, specialChars = 0;
+printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+  for (i = 0; str[i] != '\0'; i++)
+{
+        if (isdigit(str[i])) 
+{
+            digits++;
+        }
+ else if (isalpha(str[i])) 
+{
+            alphabets++;
+        }
+ else if (!isspace(str[i]))
+ {
+            specialChars++;
+        }
+    }
+    printf("Total digits: %d\n", digits);
+    printf("Total alphabets: %d\n", alphabets);
+    printf("Total special characters: %d\n", specialChars);
+ return 0;
+}
+
+Q.4 Write a program that will accept a string and character to search. The program will call a function, which will search for the occurrence of the character in the string and return its position. Function should return –1 if the character is not found in the string. Display this position in main() function.
+Ans-
+#include <stdio.h>
+int searchCharacter(const char str[], char ch) 
+{
+    for (int i = 0; str[i] != '\0'; i++) 
+{
+        if (str[i] == ch) 
+{
+            return i;
+        }
+    }
+    return -1; 
+}
+int main() 
+{
+    char str[100], ch;
+    int position;
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str, "\n")] = '\0';
+  printf("Enter a character to search: ");
+    scanf("%c", &ch);
+    position = searchCharacter(str, ch);
+    if (position != -1)
+ {
+        printf("Character '%c' found at position %d.\n", ch, position);
+    } 
+else 
+{
+        printf("Character '%c' not found in the string.\n", ch);
+    }
+return 0;
+}
+
+Q.5 Write a function that takes a string as parameter and returns the same string in
+uppercase. Accept this string in main and display converted string in main only.
+Ans-
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+void toUpperCase(char str[])
+ {
+    for (int i = 0; str[i] != '\0'; i++)
+{
+        str[i] = toupper(str[i]);
+    }
+}
+int main() 
+{
+    char str[100];
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str, "\n")] = '\0';
+    toUpperCase(str);
+    printf("String in uppercase: %s\n", str);
+ return 0;
+}
