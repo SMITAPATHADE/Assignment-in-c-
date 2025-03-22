@@ -1,0 +1,182 @@
+Q.1 Write a program to create a structure person(pid, pname, page, psalary,pcontactno) .
+read and display the information for ‘n’ number of person.
+Ans-
+#include <stdio.h>
+struct person
+ {
+    int pid;
+    char pname[50];
+    int page;
+    float psalary;
+    char pcontactno[15];
+};
+int main() 
+{
+    int n, i;
+    printf("Enter the number of persons: ");
+    scanf("%d", &n);
+ struct person persons[n];
+    for(i = 0; i < n; i++) 
+{
+        printf("\nEnter details for person %d:\n", i + 1);
+        printf("Enter ID: ");
+        scanf("%d", &persons[i].pid);
+        printf("Enter Name: ");
+        scanf(" %[^\n]", persons[i].pname);  
+        printf("Enter Age: ");
+        scanf("%d", &persons[i].page);
+        printf("Enter Salary: ");
+        scanf("%f", &persons[i].psalary);
+        printf("Enter Contact No: ");
+        scanf("%s", persons[i].pcontactno);
+    }
+    printf("\n----- Person Details -----\n");
+    for(i = 0; i < n; i++)
+ {
+        printf("\nPerson %d:\n", i + 1);
+        printf("ID: %d\n", persons[i].pid);
+        printf("Name: %s\n", persons[i].pname);
+        printf("Age: %d\n", persons[i].page);
+        printf("Salary: %.2f\n", persons[i].psalary);
+        printf("Contact No: %s\n", persons[i].pcontactno);
+    }
+  return 0;
+}
+
+Q.2 Write a program to create a structure hospital ,use the typedef to display the details.
+Ans-
+#include <stdio.h>
+typedef struct
+ {
+    char name[50];
+    char location[50];
+    int num_doctors;
+    int num_nurses;
+    int num_beds;
+} Hospital;
+int main() 
+{
+    Hospital h; 
+    printf("Enter hospital name: ");
+    fgets(h.name, sizeof(h.name), stdin);
+ printf("Enter hospital location: ");
+    fgets(h.location, sizeof(h.location), stdin);
+  printf("Enter number of doctors: ");
+    scanf("%d", &h.num_doctors);
+printf("Enter number of nurses: ");
+    scanf("%d", &h.num_nurses);
+printf("Enter number of beds: ");
+    scanf("%d", &h.num_beds);
+    printf("\n--- Hospital Details ---\n");
+    printf("Name: %s", h.name);
+    printf("Location: %s", h.location);
+    printf("Number of Doctors: %d\n", h.num_doctors);
+    printf("Number of Nurses: %d\n", h.num_nurses);
+    printf("Number of Beds: %d\n", h.num_beds);
+return 0;
+}
+
+Q.3 Write a program to create a structure student (roll number, name, marks of 6 subjects, total, percentage). Accept details of 5 students and display the same. 
+Ans-
+#include <stdio.h>
+#define NUM_STUDENTS 5
+#define NUM_SUBJECTS 6
+struct Student
+ {
+    int roll_no;
+    char name[50];
+    float marks[NUM_SUBJECTS];
+    float total;
+    float percentage;
+};
+void inputStudentDetails(struct Student *s)
+ {
+    printf("\nEnter Roll Number: ");
+    scanf("%d", &s->roll_no);
+      printf("Enter Name: ");
+    scanf(" %[^\n]", s->name); 
+    s->total = 0; 
+    printf("Enter marks of %d subjects:\n", NUM_SUBJECTS);
+    for (int i = 0; i < NUM_SUBJECTS; i++)
+ {
+        printf("Subject %d: ", i + 1);
+        scanf("%f", &s->marks[i]);
+        s->total += s->marks[i];
+    }
+       s->percentage = (s->total / (NUM_SUBJECTS * 100)) * 100; 
+}
+void displayStudentDetails(struct Student s) 
+{
+    printf("\nRoll Number: %d", s.roll_no);
+    printf("\nName: %s", s.name);
+    printf("\nMarks: ");
+     for (int i = 0; i < NUM_SUBJECTS; i++) 
+{
+        printf("%.2f ", s.marks[i]);
+    }
+ printf("\nTotal Marks: %.2f", s.total);
+    printf("\nPercentage: %.2f%%\n", s.percentage);
+}
+int main() 
+{
+    struct Student students[NUM_STUDENTS];
+    for (int i = 0; i < NUM_STUDENTS; i++) 
+{
+        printf("\nEnter details for Student %d:\n", i + 1);
+        inputStudentDetails(&students[i]);
+    }
+    printf("\n----- Student Details -----\n");
+    for (int i = 0; i < NUM_STUDENTS; i++) 
+{
+        displayStudentDetails(students[i]);
+    }
+  return 0;
+}
+
+Q.4 Write a program to create a structure person(pid, pname, page, psalary,pcontactno) read and display the information of two person use typedef.
+Ans-
+#include <stdio.h>
+typedef struct 
+{
+    int pid;          
+    char pname[50];   
+    int page;         
+    float psalary;    
+    char pcontactno[15]; 
+} Person;
+void inputPersonDetails(Person *p) 
+{
+    printf("\nEnter Person ID: ");
+    scanf("%d", &p->pid);
+     printf("Enter Name: ");
+    scanf(" %[^\n]", p->pname); 
+   printf("Enter Age: ");
+    scanf("%d", &p->page);
+printf("Enter Salary: ");
+    scanf("%f", &p->psalary);
+ printf("Enter Contact Number: ");
+    scanf("%s", p->pcontactno);
+}
+void displayPersonDetails(Person p) 
+{
+    printf("\nPerson ID: %d", p.pid);
+    printf("\nName: %s", p.pname);
+    printf("\nAge: %d", p.page);
+    printf("\nSalary: %.2f", p.psalary);
+    printf("\nContact Number: %s\n", p.pcontactno);
+}
+int main() 
+{
+    Person persons[2]; 
+    for (int i = 0; i < 2; i++) 
+{
+        printf("\nEnter details for Person %d:\n", i + 1);
+        inputPersonDetails(&persons[i]);
+    }
+    printf("\n----- Person Details -----\n");
+    for (int i = 0; i < 2; i++)
+ {
+        displayPersonDetails(persons[i]);
+    }
+ return 0;
+}
