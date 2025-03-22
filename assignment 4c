@@ -1,0 +1,172 @@
+Q.1 Program to calculate the sum of 10 numbers. Declare a pointer to integer. Allocate the memory using malloc() to it for n integers. Accept the integers, Calculate and print the sum. Lastly release the allocated memory.
+Ans-
+ #include <stdio.h>
+#include <stdlib.h> 
+int main() 
+{
+    int *numbers;     
+    int n = 10;       
+    int sum = 0;
+    numbers = (int *)malloc(n * sizeof(int));
+    if (numbers == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1; 
+    }
+    printf("Enter %d integers:\n", n);
+    for (int i = 0; i < n; i++) 
+{
+        printf("Enter number %d: ", i + 1);
+        scanf("%d", &numbers[i]);
+    }
+    for (int i = 0; i < n; i++) {
+        sum += numbers[i];
+    }
+    printf("The sum of the numbers is: %d\n", sum);
+    free(numbers);
+  return 0;
+}
+
+
+Q.2 Declare a pointer to character. Allocate them memory for n characters (string) using calloc(). Accept the string and count the number of vowels and consonants in it. Lastly free the pointer.
+Ans-
+#include <stdio.h>
+#include <stdlib.h> 
+#include <ctype.h>  
+int main() 
+{
+    char *str;        
+    int n;            
+    int vowels = 0, consonants = 0;
+    printf("Enter the number of characters (including null terminator): ");
+    scanf("%d", &n);
+    str = (char *)calloc(n, sizeof(char));
+    if (str == NULL) 
+{
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+    printf("Enter a string: ");
+    getchar(); 
+    fgets(str, n, stdin);
+ for (int i = 0; str[i] != '\0'; i++) 
+{
+        char ch = tolower(str[i]); 
+        if (ch >= 'a' && ch <= 'z') 
+{ 
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') 
+{
+                vowels++;
+            } 
+else 
+{
+                consonants++;
+            }
+        }
+    }
+    printf("Number of vowels: %d\n", vowels);
+    printf("Number of consonants: %d\n", consonants);
+    free(str);
+ return 0;
+}
+
+
+Q.3Declare a pointer to float. Allocate the memory for five float numbers.
+Accept these five numbers and print them. Expand the same memory for
+three more float numbers. Also accept the three numbers and calculate
+the sum and average of all numbers. Lastly remove the expanded block
+from memory.
+Ans-
+#include <stdio.h>
+#include <stdlib.h> 
+int main() 
+{
+    float *numbers;    
+    int initial_size = 5, expanded_size = 8;
+    float sum = 0, average;
+    numbers = (float *)malloc(initial_size * sizeof(float));
+    if (numbers == NULL) 
+{
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+    printf("Enter 5 float numbers:\n");
+    for (int i = 0; i < initial_size; i++) 
+{
+        printf("Number %d: ", i + 1);
+        scanf("%f", &numbers[i]);
+    }
+    printf("The first 5 numbers are:\n");
+    for (int i = 0; i < initial_size; i++)
+ {
+        printf("%.2f ", numbers[i]);
+    }
+    printf("\n");
+    numbers = (float *)realloc(numbers, expanded_size * sizeof(float));
+    if (numbers == NULL) 
+{
+        printf("Memory reallocation failed.\n");
+        return 1;
+    }
+    printf("Enter 3 more float numbers:\n");
+    for (int i = initial_size; i < expanded_size; i++) 
+{
+        printf("Number %d: ", i + 1);
+        scanf("%f", &numbers[i]);
+    }
+    for (int i = 0; i < expanded_size; i++) 
+{
+        sum += numbers[i];
+    }
+    average = sum / expanded_size;
+    printf("The sum of all numbers is: %.2f\n", sum);
+    printf("The average of all numbers is: %.2f\n", average);
+    free(numbers);
+return 0;
+}
+
+
+Q.4  Write a program to allocate memory dynamically for n integers
+such that the memory is initialized to 0. Accept the data from the
+user and find the range of the data elements.
+Ans- 
+#include <stdio.h>
+#include <stdlib.h> 
+int main() 
+{
+    int *numbers;    
+    int n;           
+    int min, max;    
+    printf("Enter the number of integers: ");
+    scanf("%d", &n);
+    numbers = (int *)calloc(n, sizeof(int));
+    if (numbers == NULL) 
+{
+        printf("Memory allocation failed.\n");
+        return 1; 
+    }
+    printf("Enter %d integers:\n", n);
+    for (int i = 0; i < n; i++)
+ {
+        printf("Number %d: ", i + 1);
+        scanf("%d", &numbers[i]);
+    }
+    min = max = numbers[0];
+    for (int i = 1; i < n; i++) 
+{
+        if (numbers[i] < min) 
+{
+            min = numbers[i];
+        }
+        if (numbers[i] > max)
+ {
+            max = numbers[i];
+        }
+    }
+    int range = max - min;
+    printf("Minimum value: %d\n", min);
+    printf("Maximum value: %d\n", max);
+    printf("Range (Max - Min): %d\n", range);
+    free(numbers);
+
+   return 0;
+}
