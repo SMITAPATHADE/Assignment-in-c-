@@ -2,8 +2,6 @@
   
 
   import pandas as pd
-
-# Dictionary of mobiles and prices
 mobiles = {
     "Samsung Galaxy": 25000,
     "iPhone 13": 65000,
@@ -12,9 +10,7 @@ mobiles = {
     "Realme Narzo": 15000
 }
 
-# Create DataFrame
 df = pd.DataFrame(list(mobiles.items()), columns=["Mobile Name", "Price"])
 
-# Display DataFrame
 print("Mobile DataFrame:")
 print(df)
