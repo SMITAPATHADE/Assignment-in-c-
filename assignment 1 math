@@ -1,3 +1,5 @@
+Q1
+
 import pandas as pd
 
 # Dictionary of mobiles and prices
@@ -15,3 +17,24 @@ df = pd.DataFrame(list(mobiles.items()), columns=["Mobile Name", "Price"])
 # Display DataFrame
 print("Mobile DataFrame:")
 print(df)
+
+
+Q.2
+
+def available_models():
+    return ["Honda City", "Hyundai Verna", "Toyota Fortuner", "Tata Nexon"]
+
+def available_models():
+    return ["Yamaha R15", "Royal Enfield Classic 350", "KTM Duke", "Bajaj Pulsar"]
+
+
+print("Mobile DataFrame:")
+print(df)
+
+from vehicle.types import cars, bikes
+
+print("Available Car Models:")
+print(cars.available_models())
+
+print("\nAvailable Bike Models:")
+print(bikes.available_models())
