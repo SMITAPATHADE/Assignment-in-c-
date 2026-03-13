@@ -19,22 +19,24 @@ print("Mobile DataFrame:")
 print(df)
 
 
-Q.2
+Q.2 (२)
 
-def available_models():
-    return ["Honda City", "Hyundai Verna", "Toyota Fortuner", "Tata Nexon"]
+import os
 
-def available_models():
-    return ["Yamaha R15", "Royal Enfield Classic 350", "KTM Duke", "Bajaj Pulsar"]
+# Get current directory files
+files = os.listdir()
 
+print("Files in current directory:")
+for f in files:
+    print(f)
 
-print("Mobile DataFrame:")
-print(df)
+# Count .py files
+py_files = [f for f in files if f.endswith(".py")]
 
-from vehicle.types import cars, bikes
+print("\nTotal .py files:", len(py_files))
 
-print("Available Car Models:")
-print(cars.available_models())
-
-print("\nAvailable Bike Models:")
-print(bikes.available_models())
+# Display content of one .py file
+if py_files:
+    print("\nContent of:", py_files[0])
+    with open(py_files[0], "r") as file:
+        print(file.read())
